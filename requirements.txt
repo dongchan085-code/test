@@ -4,3 +4,4 @@ feedgen
 jinja2
 python-dotenv
 flask
+pytz

@@ -4,7 +4,13 @@ on:
   schedule:
     # 매일 아침 9시 (한국시간 기준 KST 09:00 -> UTC 00:00) 
     - cron: '0 0 * * *'
-  workflow_dispatch: # 버튼으로 수동 실행도 가능하게 설정
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: '찾고 싶은 주제 (예: LLM, Vision, RAG 등)'
+        required: false
+        default: 'LLM'
+        type: string
 
 permissions:
   contents: write
@@ -33,7 +39,7 @@ jobs:
       - name: Generate Newsletter (Run main.py)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          HF_TOPIC: ${{ vars.HF_TOPIC || 'LLM' }} # GitHub Variables에서 주제 설정 가능
+          HF_TOPIC: ${{ inputs.topic || vars.HF_TOPIC || 'LLM' }}
         run: |
           python main.py
           
