@@ -5,3 +5,5 @@ jinja2
 python-dotenv
 flask
 pytz
+instaloader
+pydrive2

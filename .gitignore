@@ -14,3 +14,8 @@ env/
 # Generated outputs
 index.html
 feed.xml
+
+# Instagram -> Google Drive
+instagram_downloads/
+client_secrets.json
+credentials.json
